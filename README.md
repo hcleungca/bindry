@@ -104,6 +104,9 @@ profiles:
   default:
     beans:
       DatabaseService:
+        bean_type: "myapp.services.DatabaseService"
+        implementation: "myapp.services.DatabaseService"
+        scope: "singleton"
         constructor_args:
           url: "${DATABASE_URL:sqlite:///default.db}"
           timeout: "${DB_TIMEOUT:30}"
@@ -133,6 +136,7 @@ export ACTIVE_PROFILES=development,testing
 ```python
 @component(
     scope=Scope.SINGLETON,
+    bean_type=DatabaseService,
     constructor_args={
         "timeout": 30,
         "retries": 3,
