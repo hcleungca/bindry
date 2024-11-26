@@ -39,15 +39,15 @@ class MessageService:
     def send_message(self, msg: str): pass
 
 # Implement the service
-@component(scope=Scope.SINGLETON, bean_type=MessageService)
+# Register the bean in application-context.yaml
 class EmailService(MessageService):
     def send_message(self, msg: str):
         print(f"Sending email: {msg}")
 
-# Use dependency injection
+# Use declarator to register the bean
 @component(scope=Scope.SINGLETON)
 class NotificationManager:
-    @autowired
+    # MessageService will be injected
     def __init__(self, message_service: MessageService):
         self.message_service = message_service
 
@@ -57,7 +57,7 @@ class NotificationManager:
 
 ### 2. Configure Your Application
 
-Create a `config.yaml` file:
+Create a `application-context.yaml` file:
 
 ```yaml
 profiles:
@@ -75,7 +75,7 @@ profiles:
       MessageService:
         bean_type: "myapp.services.MessageService"
         implementation: "myapp.services.MockMessageService"
-        scope: "prototype"
+        scope: "singleton"
 ```
 
 ### 3. Initialize and Use
@@ -85,7 +85,7 @@ from bindry import ApplicationContext
 
 # Initialize the context
 context = ApplicationContext.get_instance()
-context.load_configuration("config.yaml", active_profiles=["development"])
+context.load_configuration("application-context.yaml", active_profiles=["development"])
 
 # Get and use components
 notification_manager = context.get_bean(NotificationManager)
