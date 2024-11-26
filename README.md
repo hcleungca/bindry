@@ -172,6 +172,6 @@ This project was developed with the assistance of AI language models:
 
 While the code was primarily generated through AI assistance, all implementations have been carefully reviewed and tested to ensure quality and reliability.
 
-## Sponsor
+## Sponsor this project
 [![Patreon](https://img.shields.io/badge/-Patreon-f96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/hcleungca)
 
