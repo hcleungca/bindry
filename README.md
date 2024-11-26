@@ -10,6 +10,9 @@ Elegant Python Dependency Injection with Profile-Aware Configuration
 
 Bindry is a powerful yet intuitive dependency injection framework for Python that supports profile-based configuration, environment variable interpolation, and flexible component lifecycle management. It enables you to write more maintainable and testable applications by managing dependencies through configuration rather than hard-coding them.
 
+## Motivation
+As a Spring developer, I was eager to explore the possibilities of dependency injection in Python. While Spring's robust ecosystem has been instrumental in shaping my understanding of modern software development, I found myself craving a framework that could leverage Python's unique strengths and flexibility. Bindry fills this gap by providing an elegant and intuitive solution for managing dependencies in Python applications.
+
 ## Features
 
 - Profile-based configuration management
@@ -39,15 +42,15 @@ class MessageService:
     def send_message(self, msg: str): pass
 
 # Implement the service
-@component(scope=Scope.SINGLETON, bean_type=MessageService)
+# Register the bean in application-context.yaml
 class EmailService(MessageService):
     def send_message(self, msg: str):
         print(f"Sending email: {msg}")
 
-# Use dependency injection
+# Use declarator to register the bean
 @component(scope=Scope.SINGLETON)
 class NotificationManager:
-    @autowired
+    # MessageService will be injected
     def __init__(self, message_service: MessageService):
         self.message_service = message_service
 
@@ -57,7 +60,7 @@ class NotificationManager:
 
 ### 2. Configure Your Application
 
-Create a `config.yaml` file:
+Create a `application-context.yaml` file:
 
 ```yaml
 profiles:
@@ -75,7 +78,7 @@ profiles:
       MessageService:
         bean_type: "myapp.services.MessageService"
         implementation: "myapp.services.MockMessageService"
-        scope: "prototype"
+        scope: "singleton"
 ```
 
 ### 3. Initialize and Use
@@ -85,7 +88,7 @@ from bindry import ApplicationContext
 
 # Initialize the context
 context = ApplicationContext.get_instance()
-context.load_configuration("config.yaml", active_profiles=["development"])
+context.load_configuration("application-context.yaml", active_profiles=["development"])
 
 # Get and use components
 notification_manager = context.get_bean(NotificationManager)
@@ -101,6 +104,9 @@ profiles:
   default:
     beans:
       DatabaseService:
+        bean_type: "myapp.services.DatabaseService"
+        implementation: "myapp.services.DatabaseService"
+        scope: "singleton"
         constructor_args:
           url: "${DATABASE_URL:sqlite:///default.db}"
           timeout: "${DB_TIMEOUT:30}"
@@ -130,6 +136,7 @@ export ACTIVE_PROFILES=development,testing
 ```python
 @component(
     scope=Scope.SINGLETON,
+    bean_type=DatabaseService,
     constructor_args={
         "timeout": 30,
         "retries": 3,
@@ -168,3 +175,7 @@ This project was developed with the assistance of AI language models:
 - Additional feature development and refinements by Claude.ai
 
 While the code was primarily generated through AI assistance, all implementations have been carefully reviewed and tested to ensure quality and reliability.
+
+## Sponsor this project
+[![Patreon](https://img.shields.io/badge/-Patreon-f96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/hcleungca)
+
