@@ -10,6 +10,9 @@ Elegant Python Dependency Injection with Profile-Aware Configuration
 
 Bindry is a powerful yet intuitive dependency injection framework for Python that supports profile-based configuration, environment variable interpolation, and flexible component lifecycle management. It enables you to write more maintainable and testable applications by managing dependencies through configuration rather than hard-coding them.
 
+## Motivation
+As a Spring developer, I was eager to explore the possibilities of dependency injection in Python. While Spring's robust ecosystem has been instrumental in shaping my understanding of modern software development, I found myself craving a framework that could leverage Python's unique strengths and flexibility. Bindry fills this gap by providing an elegant and intuitive solution for managing dependencies in Python applications.
+
 ## Features
 
 - Profile-based configuration management
