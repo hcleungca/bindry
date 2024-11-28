@@ -6,31 +6,31 @@ Elegant Python Dependency Injection with Profile-Aware Configuration
 [![Python Support](https://img.shields.io/pypi/pyversions/bindry.svg)](https://pypi.org/project/bindry/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Overview
+## 🌟 Overview  
 
 Bindry is a powerful yet intuitive dependency injection framework for Python that supports profile-based configuration, environment variable interpolation, and flexible component lifecycle management. It enables you to write more maintainable and testable applications by managing dependencies through configuration rather than hard-coding them.
 
-## Motivation
+## 🎯 Motivation  
 As a Spring developer, I was eager to explore the possibilities of dependency injection in Python. While Spring's robust ecosystem has been instrumental in shaping my understanding of modern software development, I found myself craving a framework that could leverage Python's unique strengths and flexibility. Bindry fills this gap by providing an elegant and intuitive solution for managing dependencies in Python applications.
 
-## Features
+## ✨ Features  
 
-- Profile-based configuration management
-- Environment variable support with fallback values
-- YAML and JSON configuration file support
-- Constructor, method, and property injection
-- Singleton and prototype scoping
-- Type-based automatic dependency resolution
-- Support for constructor arguments via configuration
-- Flexible component registration through decorators or configuration files
+- 🗂️ Profile-based configuration management  
+- 🌐 Environment variable support with fallback values  
+- 📜 YAML and JSON configuration file support  
+- ⚙️ Constructor, method, and property injection  
+- 🧩 Singleton and prototype scoping  
+- 🔍 Type-based automatic dependency resolution  
+- 🛠️ Support for constructor arguments via configuration  
+- 🏷️ Flexible component registration through decorators or configuration files  
 
-## Installation
+## 📦 Installation  
 
 ```bash
 pip install bindry
 ```
 
-## Quick Start
+## 🚀 Quick Start
 
 ### 1. Define Your Components
 
@@ -95,7 +95,7 @@ notification_manager = context.get_bean(NotificationManager)
 notification_manager.notify("Hello, World!")
 ```
 
-## Environment Variable Support
+## 🌍 Environment Variable Support
 
 Bindry supports environment variable interpolation in configuration files:
 
@@ -112,7 +112,7 @@ profiles:
           timeout: "${DB_TIMEOUT:30}"
 ```
 
-## Profile Management
+## 🔄 Profile Management
 
 ### Using Multiple Profiles
 
@@ -129,7 +129,7 @@ Set the `ACTIVE_PROFILES` environment variable:
 export ACTIVE_PROFILES=development,testing
 ```
 
-## Advanced Features
+## ⚡ Advanced Features
 
 ### Constructor Argument Injection
 
@@ -160,15 +160,15 @@ class ServiceManager:
         self.config_service = config_service
 ```
 
-## Contributing
+## 🤝 Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-## License
+## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## 🙌 Acknowledgments
 
 This project was developed with the assistance of AI language models:
 - Initial implementation assistance provided by ChatGPT
@@ -176,6 +176,6 @@ This project was developed with the assistance of AI language models:
 
 While the code was primarily generated through AI assistance, all implementations have been carefully reviewed and tested to ensure quality and reliability.
 
-## Sponsor this project
+## ❤️ Sponsor this project
 [![Patreon](https://img.shields.io/badge/-Patreon-f96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/hcleungca)
 
