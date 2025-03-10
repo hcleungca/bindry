@@ -50,7 +50,7 @@ def component(
             # If bean_type is provided, use register_bean
             if bean_type is not None:
                 dependency_configuration.register_bean(
-                    bean_type=bean_type,
+                    bean_type=bean_type.__name__,
                     implementation_class=cls,
                     scope=scope,
                     constructor_args=constructor_args,
@@ -59,7 +59,7 @@ def component(
             else:
                 # If no bean_type specified, use the class itself as both bean_type and implementation
                 dependency_configuration.register_bean(
-                    bean_type=cls,
+                    bean_type=cls.__name__,
                     implementation_class=cls,
                     scope=scope,
                     constructor_args=constructor_args,

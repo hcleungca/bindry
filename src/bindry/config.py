@@ -88,7 +88,7 @@ class DependencyConfiguration:
 
     def register_bean(
         self,
-        bean_type: Type,
+        bean_type: str,
         implementation_class: Type,
         scope: str,
         constructor_args: Optional[Dict[str, Any]] = None,
@@ -107,7 +107,7 @@ class DependencyConfiguration:
         if profile not in self.profiles:
             self.profiles[profile] = ProfileConfig(profile, {})
 
-        self.profiles[profile].bean_definitions[bean_type.__name__] = BeanDefinition(
+        self.profiles[profile].bean_definitions[bean_type] = BeanDefinition(
             implementation_class=implementation_class,
             scope=scope,
             constructor_args=constructor_args,

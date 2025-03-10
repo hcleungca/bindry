@@ -209,7 +209,7 @@ class ConfigurationLoader:
 
             # Register beans for this profile
             for bean_name, bean_config in beans_config.items():
-                bean_type = locate(bean_config["bean_type"])
+                bean_type = bean_name
                 implementation_class = locate(bean_config["implementation"])
                 scope = bean_config.get("scope", Scope.SINGLETON)
                 constructor_args = bean_config.get("constructor_args", {})
